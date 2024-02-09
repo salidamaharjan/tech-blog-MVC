@@ -8,15 +8,21 @@
 <body>
     <header>
         <nav>
-            <div>Home</div>
-            <div>Dashboard</div>
-            <div>Login</div>
-            <div> Logout  </div>
+            <a>Home</a>
+            <a>Dashboard</a>
+            {{#if loggedIn}}
+            <button>Logout</button>
+            {{else}}
+            <a>Login</a>
+            {{/if}}
         </nav>
         <h1>The Tech Blog</h1>
     </header>
     <main>
         {{{body}}}
     </main>
+    {{#if loggedIn}}
+    <script src=""></script>
+    {{/if}}
 </body>
 </html>
