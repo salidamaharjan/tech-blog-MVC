@@ -1,20 +1,21 @@
 (() => {
-  const username = document.querySelector("#username-signup");
-  const password = document.querySelector("#password-signup");
-  const signupBtn = document.querySelector("#btn-signup");
+  const loginUser = document.querySelector("#user-login");
+  const loginPassword = document.querySelector("#password-login");
+  const loginBtn = document.querySelector("#btn-login");
 
-  signupBtn.addEventListener("click", async (event) => {
+  loginBtn.addEventListener("click", async (event) => {
     event.preventDefault();
     event.stopPropagation();
 
-    if (!username.value || !password.value) {
+    if (!loginUser.value || !loginPassword.value) {
       alert("Invalid username or password");
       return;
     }
-    const data = { username: username.value, password: password.value};
 
-    const response = await fetch("/api/signup", {
-      method: "POST", 
+    const data = { username: loginUser.value, password: loginPassword.value };
+
+    const response = await fetch("api/login", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
