@@ -4,10 +4,10 @@ const { User } = require("../models");
 router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll({
-      attribute: ["username", "email"],
+      attribute: ["username"],
     });
     const users = userData.map((user) => user.get({ plain: true }));
-    res.render("homepage", {
+    res.render("main", {
       users,
       loggedIn: req.session.loggedIn,
     });
@@ -16,3 +16,4 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+module.exports = router;
