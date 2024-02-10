@@ -13,6 +13,7 @@ app.set('view engine', 'handlebars');
 // sets handlebars configurations
 app.engine('handlebars', hbs.engine);
 
+app.use(express.json());
 app.use(router);
 
 app.listen(PORT, () => {
