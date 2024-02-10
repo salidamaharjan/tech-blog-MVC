@@ -4,7 +4,8 @@ const handlebars = require("express-handlebars");
 const hbs = handlebars.create({});
 const router = require("./controller");
 const sequelize = require("./config/connection");
-var session = require("express-session");
+const session = require("express-session");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const User = require("./models/User");
 
 const app = express();
@@ -14,7 +15,15 @@ const sess = {
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: {}
+  cookie: {
+    maxAge: 2 * 60 * 60 * 1000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict'
+  },
+  store: new SequelizeStore({
+    db: sequelize,
+  })
 };
 
 app.use(session(sess));
