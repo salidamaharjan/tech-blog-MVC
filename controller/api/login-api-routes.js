@@ -9,14 +9,19 @@ router.post("/signup", async (req, res) => {
       username: req.body.username,
       password: req.body.password,
     });
-    res.status(200).json(newUser);
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(newUser);
+    });
   } catch (err) {
     console.log(err);
+    res.status(500).json(err);
   }
 });
 
 router.post("/login", async (req, res) => {
-  console.log("req.body",req.body);
+  console.log("req.body", req.body);
   try {
     const userLogin = await User.findOne({
       where: {
@@ -25,18 +30,27 @@ router.post("/login", async (req, res) => {
       },
     });
     console.log("userLogin", userLogin);
-    if(!userLogin) {
-      req.status(401).json({message: 'Incorrect email or password. Please try again!'});
+    if (!userLogin) {
+      req
+        .status(401)
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
-    };
+    }
 
     const validatePassword = userLogin.checkPassword(req.body.password);
 
-    if(!validatePassword) {
-      res.status(401).json({message: 'Incorrect email or password. Please try again!'});
+    if (!validatePassword) {
+      res
+        .status(401)
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
-    };
-    res.status(200).json({message: 'You are logged in'});
+    }
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.username = userLogin.username;
+      res.status(200).json({ message: "You are logged in" });
+    });
   } catch (err) {
     console.log(err);
   }

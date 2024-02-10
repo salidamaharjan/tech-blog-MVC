@@ -24,5 +24,6 @@
 
     const result = await response.json();
     console.log("Success:", result);
+    window.location.replace('/');
   });
 })();

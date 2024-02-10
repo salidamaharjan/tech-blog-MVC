@@ -4,11 +4,20 @@ const handlebars = require("express-handlebars");
 const hbs = handlebars.create({});
 const router = require("./controller");
 const sequelize = require("./config/connection");
+var session = require("express-session");
 const User = require("./models/User");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const sess = {
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {}
+};
+
+app.use(session(sess));
 app.use(express.static("public"));
 
 //set the app to use the handlebars engine
