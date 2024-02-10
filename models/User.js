@@ -38,6 +38,8 @@ User.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
+    timestamps: true,
+    modelName: 'user'
   }
 );
 module.exports = User;

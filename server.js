@@ -6,7 +6,7 @@ const router = require("./controller");
 const sequelize = require("./config/connection");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const User = require("./models/User");
+const { User, Post } = require("./models");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,11 +19,11 @@ const sess = {
     maxAge: 2 * 60 * 60 * 1000,
     httpOnly: true,
     secure: false,
-    sameSite: 'strict'
+    sameSite: "strict",
   },
   store: new SequelizeStore({
     db: sequelize,
-  })
+  }),
 };
 
 app.use(session(sess));
@@ -45,6 +45,16 @@ async function runApp() {
   const user = await User.create({
     username: "test",
     password: "testtest",
+  });
+  const post1 = await Post.create({
+    userId: user.id, 
+    title: "Greeting",
+    content: "hello",
+  });
+  const post2 = await Post.create({
+    userId: user.id,
+    title: "food",
+    content: "MoMo",
   });
 
   app.listen(PORT, () => {
