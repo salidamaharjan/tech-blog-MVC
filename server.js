@@ -46,8 +46,12 @@ async function runApp() {
     username: "test",
     password: "testtest",
   });
+  const user2 = await User.create({
+    username: "tests",
+    password: "testtest",
+  });
   const post1 = await Post.create({
-    userId: user.id, 
+    userId: user.id,
     title: "Greeting",
     content: "hello",
   });
@@ -55,6 +59,16 @@ async function runApp() {
     userId: user.id,
     title: "food",
     content: "MoMo",
+  });
+  const post3 = await Post.create({
+    userId: user2.id,
+    title: "user2",
+    content: "user2",
+  });
+  const post4 = await Post.create({
+    userId: user2.id,
+    title: "user user",
+    content: "post4",
   });
 
   app.listen(PORT, () => {
