@@ -1,7 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const handlebars = require("express-handlebars");
-const hbs = handlebars.create({});
+const helpers = require("./utils/helpers");
+const hbs = handlebars.create({ helpers: helpers });
 const router = require("./controller");
 const sequelize = require("./config/connection");
 const session = require("express-session");
