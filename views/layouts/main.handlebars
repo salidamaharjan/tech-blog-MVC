@@ -1,28 +1,27 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech BLog</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <a href="/">Home</a>
-            <a>Dashboard</a>
-            {{#if loggedIn}}
-            <button id="logout">Log Out</button>
-            {{else}}
-            <a href="/login">Login</a> 
-            {{/if}}
-        </nav>
-        <h1>The Tech Blog - {{username}}</h1>
+      <nav>
+        <a href="/">Home</a>
+        {{#if loggedIn}}
+          <a href="/dashboard">Dashboard</a>
+          <button id="logout">Log Out</button>
+        {{else}}
+          <a href="/login">Login</a>
+        {{/if}}
+      </nav>
+      <h1>The Tech Blog - {{username}}</h1>
     </header>
     <main>
-        {{{body}}}
-    </main> 
-    {{#if loggedIn}} 
-    <script src="/js/logout.js"></script>
+      {{{body}}}
+    </main>
+    {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
     {{/if}}
-</body>
+  </body>
 </html>
