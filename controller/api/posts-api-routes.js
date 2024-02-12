@@ -18,14 +18,22 @@ router.put("/posts/:id", async (req, res) => {
         },
       }
     );
-    // req.params.title = contentUpdate.title;
-    // req.params.content = contentUpdate.content;
-    // res.status(200).json({message: "Updated"});
+
     res.status(200).json({ contentUpdate });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.delete("/posts/:id", async (req, res) => {
+  console.log(req.body.id);
+  await Post.destroy({
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.status(200).end();
 });
 
 module.exports = router;

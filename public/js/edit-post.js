@@ -21,4 +21,18 @@
     const result = await response.json();
     console.log("Success:", result);
   });
+
+  deleteBtn.addEventListener('click', async (event) => {
+    const postId = document.querySelector("#post-id");
+    event.stopPropagation();
+    event.preventDefault();
+
+    const response = await fetch(`/api/posts/${postId.value}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    window.location.replace('/dashboard');
+  })
 })();
