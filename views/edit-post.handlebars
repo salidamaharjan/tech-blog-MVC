@@ -1,0 +1,18 @@
+<input id="post-id" value="{{post.id}}" hidden />
+<label>Title
+    <input type="text" id="title"value="{{post.title}}"
+    style="border: 1px solid black; margin: 5px; display: block"
+    />
+  </label>
+<label>Content
+    <textarea type="text" id="content" style="border: 1px solid black; margin: 5px; display: block"
+        >{{post.content}}
+    </textarea></label>
+<button id="btn-update" style="border: 1px solid black; margin: 5px; display: block">
+    Update
+</button>
+<button id="btn-delete" style="border: 1px solid black; margin: 5px; display: block">
+    Delete
+</button>
+
+<script src="/js/edit-post.js"></script>

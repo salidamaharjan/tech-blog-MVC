@@ -19,4 +19,22 @@ router.get("/posts/:id", async (req, res) => {
   });
 });
 
+router.get("/posts/:id/edit", async (req, res) => {
+  const postById = await Post.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: {
+      model: User,
+      attributes: ["id", "username"],
+    },
+  });
+  const post = postById.get({ plain: true });
+  res.render("edit-post", {
+    post: post,
+    username: req.session.username,
+    loggedIn: req.session.loggedIn, 
+  });
+});
+
 module.exports = router;
