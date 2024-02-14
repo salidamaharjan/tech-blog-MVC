@@ -5,7 +5,7 @@
       <div class="card-body">
         <h5 class="card-title fs-2">{{post.title}}</h5>
         <h6 class="card-subtitle mb-2 fw-lighter text-body-secondary">by
-          {{post.user.username}} updated at {{post.updatedAt}}</h6>
+          {{post.user.username}} updated on {{formatDate post.updatedAt}}</h6>
         <p class="card-text fs-5">{{post.content}}</p>
       </div>
     </div>
@@ -18,7 +18,7 @@
               {{comment.commentText}}
               <div class="card-subtle text-body-secondary fw-lighter fs-6">
                 by
-              {{comment.user.username}} updated at {{comment.updatedAt}}
+              {{comment.user.username}} updated on {{formatDate comment.updatedAt}}
               </div>
               
             </div>

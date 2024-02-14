@@ -1,10 +1,19 @@
-<h1>Your Dashboard</h1>
-<div>
-  {{#each posts as |post|}}
-    <a
-      href="/posts/{{id}}/edit"
-      style="border: 1px solid black; display: block; margin: 10 px"
-    >{{post.title}}</a>
-  {{/each}}
-  <a href="/posts/create">Create Post</a>
+<div class="p-3">
+  <h1 class="p-3">Your Dashboard</h1>
+  <a class="ms-3 btn btn-primary"href="/posts/create">Create Post</a>
+  <div class="p-3 d-flex flex-column gap-4">
+    {{#each posts as |post|}}
+      <a class="card text-decoration-none" href="/posts/{{id}}/edit">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{post.title}}
+          </h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary fw-lighter">by
+            {{post.user.username}}
+            updated on
+            {{formatDate post.updatedAt}}</h6>
+        </div>
+      </a>
+    {{/each}}
+  </div>
 </div>
