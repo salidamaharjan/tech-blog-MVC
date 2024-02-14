@@ -1,8 +1,21 @@
+<input id="post-id" value="{{post.id}}" hidden />
 <p>{{post.title}}</p>
 <p>{{post.content}}</p>
 <p>{{post.user.username}}</p>
+{{#each post.comments as |comment|}}
+  <p>{{comment.commentText}}-{{comment.user.username}}</p>
+{{/each}}
 {{#if loggedIn}}
-  {{#if (equals username post.user.username)}}
-    <button>Edit</button>
-  {{/if}}
+  <label><span>Comment</span>
+    <textarea
+      id="comment-text"
+      type="text"
+      style="border: 1px solid black; margin: 5px; display: block"
+    ></textarea>
+  </label>
+  <button
+    id="btn-submit"
+    style="border: 1px solid black; margin: 5px; display: block"
+  >Submit</button>
 {{/if}}
+<script src="/js/comment.js"></script>
