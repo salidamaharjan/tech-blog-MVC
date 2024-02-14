@@ -29,6 +29,7 @@ router.put("/posts/:id", isAuthenticator, async (req, res) => {
       {
         where: {
           id: parseInt(req.params.id),
+          userId: req.session.userId,
         },
       }
     );
@@ -45,6 +46,7 @@ router.delete("/posts/:id", isAuthenticator, async (req, res) => {
   await Post.destroy({
     where: {
       id: req.params.id,
+      userId: req.session.userId,
     },
   });
   res.status(200).end();
