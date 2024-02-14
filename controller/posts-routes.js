@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Post, User, Comments } = require("../models");
+const {isAuthenticator} = require('../middleware/isAuthenticator');
 
 router.get("/posts/:id", async (req, res) => {
   const postById = await Post.findOne({
@@ -31,7 +32,7 @@ router.get("/posts/:id", async (req, res) => {
   });
 });
 
-router.get("/posts/:id/edit", async (req, res) => {
+router.get("/posts/:id/edit", isAuthenticator, async (req, res) => {
   const postById = await Post.findOne({
     where: {
       id: req.params.id,

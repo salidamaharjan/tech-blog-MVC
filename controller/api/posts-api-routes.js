@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const Post = require("../../models/Post");
+const {isAuthenticator} = require('../../middleware/isAuthenticator');
 
-router.post("/posts", async (req, res) => {
+
+router.post("/posts", isAuthenticator, async (req, res) => {
   console.log("title:", req.body.title);
   console.log("title:", req.body.content);
 
@@ -17,12 +19,8 @@ router.post("/posts", async (req, res) => {
     res.status(500).json(err);
   }
 });
-router.put("/posts/:id", async (req, res) => {
+router.put("/posts/:id", isAuthenticator, async (req, res) => {
   try {
-    if (!req.session.loggedIn) {
-      res.status(401).end();
-      return;
-    }
     console.log("Updating......");
     console.log({ param: req.params });
     console.log(req.body.content);
@@ -42,7 +40,7 @@ router.put("/posts/:id", async (req, res) => {
   }
 });
 
-router.delete("/posts/:id", async (req, res) => {
+router.delete("/posts/:id", isAuthenticator, async (req, res) => {
   console.log(req.body.id);
   await Post.destroy({
     where: {

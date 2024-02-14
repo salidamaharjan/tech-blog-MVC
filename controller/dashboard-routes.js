@@ -1,11 +1,8 @@
 const router = require('express').Router();
 const {Post} = require('../models');
+const { isAuthenticator} = require('../middleware/isAuthenticator');
 
-router.get('/dashboard', async(req, res) => {
-    if (!req.session.loggedIn){
-        res.redirect("/");
-        return;
-    };
+router.get('/dashboard', isAuthenticator, async(req, res) => {
     const allPost = await Post.findAll({
         where: {
             userId : req.session.userId,

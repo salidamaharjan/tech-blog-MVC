@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const { Comments } = require("../../models");
+const {isAuthenticator} = require('../../middleware/isAuthenticator');
 
-router.post("/posts/:id/comments", async (req, res) => {
+router.post("/posts/:id/comments", isAuthenticator, async (req, res) => {
   try {
     const newComment = await Comments.create({
       commentText: req.body.commentText,
