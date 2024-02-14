@@ -1,4 +1,4 @@
-<div class="login-card">
+{{!-- <div class="login-card">
     <h2 class="signUp">Sign Up</h2>
     <form class="signUp-form">
         <label>Username
@@ -10,5 +10,30 @@
         <button id="btn-signup">Sign Up!</button>
         <a href="/login">Log in instead</a>
     </form>
+</div> --}}
+<div class="d-flex align-items-center justify-content-center">
+  <div class="login-card card mt-5 w-50">
+    <div class="card-body">
+      <h2 class="signUp">Sign Up</h2>
+      <form class="signUp-form">
+        <div class="mb-3">
+          <label for="username-signup" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username-signup"
+            aria-describedby="username-signup"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password-signup" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password-signup" />
+        </div>
+        <button id="btn-signup" class="btn btn-primary">Sign Up!</button>
+        <a href="/login">Log in instead</a>
+      </form>
+    </div>
+  </div>
 </div>
+
 <script src="/js/signup.js"></script>
