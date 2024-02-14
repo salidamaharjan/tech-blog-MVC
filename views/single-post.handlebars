@@ -1,21 +1,51 @@
 <input id="post-id" value="{{post.id}}" hidden />
-<p>{{post.title}}</p>
-<p>{{post.content}}</p>
-<p>{{post.user.username}}</p>
-{{#each post.comments as |comment|}}
-  <p>{{comment.commentText}}-{{comment.user.username}}</p>
-{{/each}}
-{{#if loggedIn}}
-  <label><span>Comment</span>
-    <textarea
-      id="comment-text"
-      type="text"
-      style="border: 1px solid black; margin: 5px; display: block"
-    ></textarea>
-  </label>
-  <button
-    id="btn-submit"
-    style="border: 1px solid black; margin: 5px; display: block"
-  >Submit</button>
-{{/if}}
+<div class="p-3">
+  <div class="d-flex flex-column gap-4 m-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title fs-2">{{post.title}}</h5>
+        <h6 class="card-subtitle mb-2 fw-lighter text-body-secondary">by
+          {{post.user.username}} updated at {{post.updatedAt}}</h6>
+        <p class="card-text fs-5">{{post.content}}</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5> Comments</h5>
+        {{#each post.comments as |comment|}}
+          <div class="card mb-2">
+            <div class="card-body fs-5">
+              {{comment.commentText}}
+              <div class="card-subtle text-body-secondary fw-lighter fs-6">
+                by
+              {{comment.user.username}} updated at {{comment.updatedAt}}
+              </div>
+              
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <div>
+      {{#if loggedIn}}
+        <div class="card">
+          <div class="card-body">
+            <form class="comment-form">
+              <h5 class="mb-3">
+                <label for="comment-text" class="form-label">Add Comment</label>
+                <textarea
+                  id="comment-text"
+                  type="text"
+                  class="form-control"
+                ></textarea>
+              </h5>
+              <button id="btn-submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>
+
 <script src="/js/comment.js"></script>

@@ -1,7 +1,6 @@
-<a class="mb-3 p-3"
-  href="/posts/{{id}}"
-  style="border: 1px solid black; display: block; margin: 1px"
->
-  <p>{{title}}</p>
-  <p>{{user.username}}</p>
+<a class="card text-decoration-none" href="/posts/{{id}}">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">by {{user.username}}</h6>
+  </div>
 </a>
