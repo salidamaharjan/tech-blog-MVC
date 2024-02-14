@@ -1,18 +1,47 @@
-<h1>Create New Post</h1>
+{{!-- <h1>Create New Post</h1>
 <label>Title
-  <input id="newTitle"
+  <input
+    id="newTitle"
     type="text"
     style="border: 1px solid black; margin: 5px; display: block"
   />
 </label>
 <label>Content
-  <textarea id="newContent"
+  <textarea
+    id="newContent"
     type="text"
     style="border: 1px solid black; margin: 5px; display: block"
   ></textarea>
 </label>
-<button style="border: 1px solid black; margin: 5px; display: block" id="btn-create">
-    Create
-</button>
+<button
+  style="border: 1px solid black; margin: 5px; display: block"
+  id="btn-create"
+>
+  Create
+</button> --}}
+
+<div class="d-flex align-items-center justify-content-center">
+  <div class="create-post-card card mt-5 w-75">
+    <div class="card-body">
+      <h2 class="login">Create New Post</h2>
+      <form class="login-form">
+        <div class="mb-3">
+          <label for="newTitle" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="newTitle"
+            aria-describedby="newTitle"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="newContent" class="form-label">Content</label>
+          <textarea class="form-control" id="newContent"></textarea>
+        </div>
+        <button id="btn-create" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </div>
+</div>
 
 <script src="/js/create-post.js"></script>
