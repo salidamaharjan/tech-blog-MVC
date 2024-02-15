@@ -1,18 +1,28 @@
 <input id="post-id" value="{{post.id}}" hidden />
-<label>Title
-    <input type="text" id="title"value="{{post.title}}"
-    style="border: 1px solid black; margin: 5px; display: block"
-    />
-  </label>
-<label>Content
-    <textarea type="text" id="content" style="border: 1px solid black; margin: 5px; display: block"
-        >{{post.content}}
-    </textarea></label>
-<button id="btn-update" style="border: 1px solid black; margin: 5px; display: block">
-    Update
-</button>
-<button id="btn-delete" style="border: 1px solid black; margin: 5px; display: block">
-    Delete
-</button>
+
+<div class="d-flex align-items-center justify-content-center">
+  <div class="edi-post-card card mt-5 w-50">
+    <div class="card-body">
+      <form class="edit-post-form">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            value="{{post.title}}"
+            aria-describedby="title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="content" class="form-label">Content</label>
+          <textarea class="form-control" id="content">{{post.content}}</textarea>
+        </div>
+        <button id="btn-update" class="btn btn-primary">Update</button>
+        <button id="btn-delete" class="btn btn-primary">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
 
 <script src="/js/edit-post.js"></script>
