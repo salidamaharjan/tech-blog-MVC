@@ -21,7 +21,11 @@
       },
       body: JSON.stringify(data),
     });
-
+    if(response.status >= 400) {
+      alert("Login failed try again");
+      loginPassword.value = "";
+      return;
+    }
     const result = await response.json();
     console.log("Success:", result);
     window.location.replace('/');
