@@ -6,7 +6,7 @@
 
 ## Description
 * This project is completed to create a Tech-Blog Post.
-* The user are required to login in order to add comment on other's post, to delete or update their post.
+* The user are required to login in order to create post, add comment on the post, to delete or update their post.
 * If not logged in then the user can only view the posts.
 
 ## Table of Content
