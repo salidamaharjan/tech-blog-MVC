@@ -6,7 +6,7 @@
         <h5 class="card-title fs-2">{{post.title}}</h5>
         <h6 class="card-subtitle mb-2 fw-lighter text-body-secondary">by
           {{post.user.username}} updated on {{formatDate post.updatedAt}}</h6>
-        <p class="card-text fs-5">{{post.content}}</p>
+        <p class="card-text fs-5" style="white-space: pre-wrap">{{post.content}}</p>
       </div>
     </div>
     <div class="card">
@@ -15,12 +15,11 @@
         {{#each post.comments as |comment|}}
           <div class="card mb-2">
             <div class="card-body fs-5">
-              {{comment.commentText}}
+              <div style="white-space: pre-wrap">{{comment.commentText}}</div>
               <div class="card-subtle text-body-secondary fw-lighter fs-6">
                 by
               {{comment.user.username}} updated on {{formatDate comment.updatedAt}}
-              </div>
-              
+              </div>              
             </div>
           </div>
         {{/each}}
