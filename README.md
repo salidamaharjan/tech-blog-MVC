@@ -5,6 +5,9 @@
 [GitHub Repo Link](https://github.com/salidamaharjan/tech-blog-MVC)
 
 ## Description
+* This project is completed to create a Tech-Blog Post.
+* The user are required to login in order to add comment on other's post, to delete or update their post.
+* If not logged in then the user can only view the posts.
 
 ## Table of Content
 1. [Installation](#installation)
@@ -25,6 +28,11 @@
 
 ## Credits
 * Boot camp course, class activities
+* [Sequelize Documentation](https://sequelize.org/docs/v6/getting-started/)
+* [Handlebars.js](https://handlebarsjs.com/guide/#installation)
+* [Express.js](https://expressjs.com/en/starter/basic-routing.html)
+* [Session Storage](https://expressjs.com/en/resources/middleware/session.html)
+* [Dayjs](https://github.com/iamkun/dayjs)
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
